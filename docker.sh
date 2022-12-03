@@ -9,3 +9,4 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 apt-cache policy docker-ce
 sudo apt install docker-ce -y
 docker swarm init
+docker stack deploy -c docker-compose.yml projeto
