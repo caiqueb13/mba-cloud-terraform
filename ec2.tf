@@ -44,7 +44,7 @@ module "docker_ec2_instance" {
   name = "docker-projeto"
 
   ami                    = data.aws_ami.ami_ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = "t3a.micro"
   key_name               = "chave-new-gen"
   monitoring             = true
   vpc_security_group_ids = [module.docker_sg.security_group_id]
