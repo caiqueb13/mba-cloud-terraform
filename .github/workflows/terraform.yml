@@ -21,6 +21,11 @@ jobs:
            aws-secret-access-key: ${{ secrets.SECRET_KEY_AWS }}  
            aws-session-token: ${{ secrets.SESSION_KEY_AWS }}  
            aws-region: us-east-1a
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+           terraform_version: 1.3.6
       
       - name: Terraform Format
         id: fmt
