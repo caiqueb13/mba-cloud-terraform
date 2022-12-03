@@ -21,6 +21,14 @@ jobs:
           - name: Checkout
             uses: actions/checkout@v2
 
+          - name: "Configure AWS Credentials"
+            uses: aws-actions/configure-aws-credentials@v1
+            with:
+              aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+              aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+              aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
+              aws-region: us-east-1
+
           - name: Setup Terraform
             uses: hashicorp/setup-terraform@v1
             with:
@@ -28,11 +36,11 @@ jobs:
 
           - name: Terraform fmt
             id: fmt
-            run: terraform fmt -check
+            run: terraform fmt
 
           - name: Terraform Init
             id: init
-            run: terraform init -backend=true -backend-config="backend.tf"
+            run: terraform init
 
           - name: Terraform Validate
             id: validate
