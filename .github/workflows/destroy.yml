@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_AWS }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY_AWS }}
-  AWS_SESSION_TOKEN: ${{ secrets.SESSION_KEY_AWS }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.BLOCK_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.BLOCK_SECRET }}
+  #AWS_SESSION_TOKEN: ${{ secrets.SESSION_KEY_AWS }}
 
 jobs:
   destroy:
@@ -26,8 +26,8 @@ jobs:
             with:
               aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
               aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-              aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
-              aws-region: us-east-1
+              #aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
+              aws-region: sa-east-1
 
           - name: Setup Terraform
             uses: hashicorp/setup-terraform@v1
