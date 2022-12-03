@@ -49,6 +49,7 @@ module "docker_ec2_instance" {
   monitoring             = true
   vpc_security_group_ids = [module.docker_sg.security_group_id]
   subnet_id              = module.my-vpc.subnet-name1
+  iam_instance_profile   = "LabInstanceProfile"
   user_data              = file("./docker.sh")
 
   tags = {
