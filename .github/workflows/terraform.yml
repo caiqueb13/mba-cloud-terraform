@@ -6,6 +6,11 @@ on:
       - main
   pull_request:
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_AWS }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY_AWS }}
+  AWS_SESSION_TOKEN: ${{ secrets.SESSION_KEY_AWS }}
+
 jobs:
   terraform:
     name: "Terraform"
@@ -14,14 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: "Configure AWS Credentials"
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-           aws-access-key-id: ${{ secrets.ACCESS_KEY_AWS }}  
-           aws-secret-access-key: ${{ secrets.SECRET_KEY_AWS }}  
-           aws-session-token: ${{ secrets.SESSION_KEY_AWS }}  
-           aws-region: us-east-1
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
