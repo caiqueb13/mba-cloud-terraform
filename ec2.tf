@@ -45,10 +45,11 @@ module "docker_ec2_instance" {
 
   ami                    = data.aws_ami.ami_ubuntu.id
   instance_type          = "t3a.micro"
-  key_name               = "wordpress-challenge"
+  key_name               = "chave-new-gen"
   monitoring             = true
   vpc_security_group_ids = [module.docker_sg.security_group_id]
   subnet_id              = module.my-vpc.subnet-name1
+  iam_instance_profile   = "LabInstanceProfile"
   user_data              = file("./docker.sh")
 
   tags = {
