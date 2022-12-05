@@ -6,7 +6,7 @@ module "my-vpc" {
 # Captura da última AMI Ubuntu lançada
 
 data "aws_ami" "ami_ubuntu" {
-  most_recent = false
+  most_recent = true
   owners      = ["099720109477"]
 
   filter {
