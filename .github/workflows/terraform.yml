@@ -3,8 +3,8 @@ name: "Terraform"
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+ #   branches:
+ #     - main
   pull_request:
 
 env:
@@ -57,7 +57,7 @@ jobs:
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
-          github-token: ${{ secrets.GIT_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
